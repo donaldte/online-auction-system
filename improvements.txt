@@ -1,0 +1,13 @@
+improvements.txt
+
+
+
+3. get the highest bidder and send email --(highest bidder got and email left)
+4. home page and other page quick view functionality
+
+6. home page category wise distribution    --not needed as of now(fundraising should be done )
+
+8.about page ui
+9. blog page form,contact page form and comments-rating review form.
+10. wishlist which can be done looking at dev to dep project show enquiry on wishlisted page    (done)
+11. subscribe to newsletter (done)
