@@ -7,7 +7,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Aukshan - Home</title>
+  <title>OpenAuctions - Home</title>
 	<link rel="icon" href="/static/img/Fevicon.png" type="image/png">
   <link rel="stylesheet" href="{% static 'features/bootstrap/bootstrap.min.css' %} ">
   <link rel="stylesheet" href="{% static 'features/fontawesome/css/all.min.css' %}">
@@ -33,7 +33,7 @@
       <div class="main_menu">
         <nav class="navbar navbar-expand-lg navbar-light">
           <div class="container">
-            <a class="navbar-brand logo_h" href="{% url 'home-page' %}"><span style="padding-left:0px;"  > Aukshan</span></a>
+            <a class="navbar-brand logo_h" href="{% url 'home-page' %}"><span style="padding-left:0px;"  > OpenAuctions</span></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
               aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="icon-bar"></span>
@@ -152,6 +152,16 @@
                 ><a class="nav-link" href="{% url 'register' %}">  Register</a></li>
 
                 {% endif %}
+
+                {% if request.user.is_authenticated %}
+                  {% if sel %}
+                    <li class="nav-item active"><a
+                      class="nav-link" href="{% url 'auction:seller-page' seller=request.user.username %}">Seller Dashboard</a></li>
+                    {% else %}
+                    <li class="nav-item active"><a
+                      class="nav-link" href="{% url 'become_seller' %}"> Become seller </a></li>    
+                  {% endif %}
+                {% endif %}
                
               </ul>
             </div>
@@ -183,7 +193,7 @@
         <div class="container">
           <div class="subscribe text-center">
             <h3 class="subscribe__title">Get Update From Anywhere</h3>
-            <p>Bearing Void gathering light light his eavening unto dont afraid</p>
+            <p></p>
             <div id="mc_embed_signup">
               <form  action="{% url 'auction:subscribe' %}" method="POST" class="subscribe-form form-inline mt-5 pt-1">
               {% csrf_token %}
@@ -219,11 +229,10 @@
                           <div class="single-footer-widget tp_widgets">
                               <h4 class="footer_title large_title">Our Mission</h4>
                               <p>
-                                  So seed seed green that winged cattle in. Gathering thing made fly you're no 
-                                  divided deep moved us lan Gathering thing us land years living.
+                                Our mission is to provide a secure and efficient online auctioning platform that connects buyers and sellers worldwide,fostering transperency,trust,and fair competition,while delivering a seemless user experience.
                               </p>
                               <p>
-                                  So seed seed green that winged cattle in. Gathering thing made fly you're no divided deep moved 
+                                   
                               </p>
                           </div>
                       </div>
@@ -261,24 +270,24 @@
                                       <span class="fa fa-location-arrow"></span>
                                       Head Office
                                   </p>
-                                  <p>123, Main Street, Your City</p>
+                                  <p>,Bambili,Bamenda</p>
       
                                   <p class="sm-head">
                                       <span class="fa fa-phone"></span>
                                       Phone Number
                                   </p>
                                   <p>
-                                      +123 456 7890 <br>
-                                      +123 456 7890
+                                      +237678896955<br>
+                                      
                                   </p>
       
                                   <p class="sm-head">
                                       <span class="fa fa-envelope"></span>
-                                      Email
+                                      Email 
                                   </p>
                                   <p>
-                                      free@infoexample.com <br>
-                                      www.infoexample.com
+                                      tcyekov@gmail.com <br>
+                                      
                                   </p>
                               </div>
                           </div>

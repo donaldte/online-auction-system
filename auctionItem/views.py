@@ -22,48 +22,62 @@ def all_item(request,category_slug=None):
     category=None
     categories=Category.objects.all()
     
-    print(category_slug)
     if category_slug:
         category=get_object_or_404(Category,slug=category_slug)
         products = products.filter(category=category)
-    print(category)
     
     items_trending = Lot.objects.filter(is_trending=True)
     paginator =Paginator(items_trending, 6) 
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number) 
+
+    sel = False
+ 
+    seller = Seller.objects.filter(name=request.user.username)
+    if seller:
+        sel = True
     context={
         'items':page_obj,
         'products':products,
         'categories':categories,
         'category':category, 
+        'sel': sel
         
     }
     return render(request,'all_item.html',context)
 
 
 def single_item(request,item_id,slug):
-    lot=get_object_or_404(Lot,
-                          id=item_id,
-                          slug=slug,
-                          )
-    auction= get_object_or_404(
-        Auction,id=item_id
-    )
+    # lot=get_object_or_404(Lot,
+    #                       id=item_id,
+    #                       slug=slug,
+    #                       )
+    # auction= get_object_or_404(
+    #     Auction,id=item_id
+    # )
+
+    lot = Lot.objects.get(id=item_id, slug=slug)
+    auction = Auction.objects.get(id=item_id)
     
     print(auction)
     ####SEller ka page banao
     
     
+    sel = False
    
     
     room=False
     if request.user.is_authenticated:
         
         room= request.user
-        print(room)
+        seller = Seller.objects.filter(name=request.user.username)
+        if seller:
+            sel = True
+    
+       
     slugged=Lot.objects.filter(slug=slug)
-    category=get_object_or_404(Category,slug=slug) 
+    #category=get_object_or_404(Category,slug=slug) 
+    category = Category.objects.get(slug=slug)
     
     
     context={
@@ -76,6 +90,7 @@ def single_item(request,item_id,slug):
         'room':room,
         'endingtime': auction.curr_time,
         'total_views':5,
+        'sel': sel
     }
     return render(request,'single_item.html',context)
 
@@ -109,12 +124,19 @@ def search(request,category_slug=None):
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number) 
     
+    
+    sel = False
+    if request.user.is_authenticated:
+        seller = Seller.objects.filter(name=request.user.username)
+        if seller:
+                sel = True
     context={
         'lots' :page_obj,
         'items':Lot.objects.all(),
         'filters':filter_category,
         'category':category,
         'categories':categories,
+        'sel': sel,
         
     }
     return render(request,'search.html',context)
@@ -122,7 +144,7 @@ def search(request,category_slug=None):
 
 def seller_page(request,seller):
     
-    seller=Seller.objects.get(id=seller)
+    seller=Seller.objects.get(name=seller)
     lots=Lot.objects.all()
     
     
@@ -130,10 +152,16 @@ def seller_page(request,seller):
     return render(request,'seller-page.html' ,{ 'lot':lots,'seller':seller } )
     
 def contact(request,id):
+    sel = False
+    if request.user.is_authenticated:
+        seller = Seller.objects.filter(name=request.user.username)
+        if seller:
+                sel = True
     lot=get_object_or_404(Lot,pk=id)
     context={
         'lot':lot,
          #'title': sproperty.title 
+         'sel': sel
     }
     return render(request,'contact_us.html',context)
 
@@ -162,12 +190,12 @@ def contact_submit(request):
         
         contact.save()
         #sending email
-        send_mail(
-            lot,
-                message,
-                'melzpereira0509@gmail.com',
-                [email,'melodypereira05@gmail.com'],#'sukhadamorgaonkar28@gmail.com','chetna.nihalani@yahoo.in'],
-        )
+        # send_mail(
+        #     lot,
+        #         message,
+        #         'melzpereira0509@gmail.com',
+        #         [email,'melodypereira05@gmail.com'],#'sukhadamorgaonkar28@gmail.com','chetna.nihalani@yahoo.in'],
+        # )
         
        
         

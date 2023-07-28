@@ -95,10 +95,10 @@
                   <h4>Shop is fun</h4>
                   <h1>Audi Q5 Premium</h1>
                   <p>Capitalize on low hanging fruit to identify a ballpark.</p>
-                  <p>Initial bid : $ 50000 </p>
-                  <p>Current bid: $65500</p>
+                  <p>Initial bid : 50000FCFA </p>
+                  <p>Current bid: 65500FCFA</p>
                   
-                  <a class="button button-hero" href="#">Bid Now</a>
+                  <a class="button button-hero" href="/auction/search/">Bid Now</a>
                 </div>
               </div>
             </div>
@@ -130,8 +130,8 @@
               <h4>Shop is fun</h4>
               <h1>{{ item.product_name }}</h1>
               <p>{{ item.category }}</p>
-              <p>Initial bid : $ {{ item.base_price|intcomma }} </p>
-              <p>Current bid: $ {{ item.base_price }}</p>
+              <p>Initial bid : FCFA {{ item.base_price|intcomma }} </p>
+              <p>Current bid: FCFA {{ item.base_price }}</p>
               
               <a class="button button-hero" href="{{ item.get_absolute_url }}">Bid Now</a>
             </div>
@@ -190,7 +190,8 @@
         <div class="col-md-6 col-lg-4 col-xl-3">
           <div class="card text-center card-product">
             <div class="card-product__img">
-              <img  style="width: 250px; height:270px;"  class="card-img" src="{{ item.main_photo.url }}" alt="">
+              <a href="{{ item.get_absolute_url }}"><img  style="width: 250px; height:270px;"  class="card-img" src="{{ item.main_photo.url }}" alt="">
+              </a>
               {% if item.is_live %}
               <button  class="btn btn-primary" id="badge" >Live</button>
               {% else %}
@@ -198,14 +199,15 @@
               {% endif %}
               <ul class="card-product__imgOverlay">
                 <li><button><i class="ti-search"></i></button></li>
-                <li><button><i class="lnr lnr lnr-eye"></i></button></li>
+                <li><a href="{{ item.get_absolute_url }}"><button><i class="lnr lnr lnr-eye"></i>
+                </li>
                 <li><button><i class="ti-heart"></i></button></li>
               </ul>
             </div>
             <div class="card-body">
               <p>{{ item.category }}</p>
               <h4 class="card-product__title"><a href="{{ item.get_absolute_url }}">{{ item.product_name }}</a></h4>
-              <p class="card-product__price">$ {{ item.base_price }}</p>
+              <p class="card-product__price">FCFA {{ item.base_price }}</p>
             </div>
           </div>
         </div>
@@ -249,7 +251,7 @@
               <div class="card-body">
                 <p>{{ item.category }}</p>
                 <h4 class="card-product__title"><a href="{{ item.get_absolute_url }}">{{ item.product_name }}</a></h4>
-                <p class="card-product__price">$ {{ item.base_price }}</p>
+                <p class="card-product__price">FCFA{{ item.base_price }}</p>
               </div>
             </div>
           </div>
@@ -268,8 +270,8 @@
           <div class="col-xl-5">
             <div class="offer__content text-center">
               <h3>Up To 50% Off</h3>
-              <h4>Winter Sale</h4>
-              <p>Him she'd let them sixth saw light</p>
+              <h4></h4>
+              <p></p>
               <a class="button button--active mt-3 mt-xl-4" href="#">Shop Now</a>
             </div>
           </div>
@@ -321,7 +323,7 @@
                   <div class="card-product-title" >
                   <h3  class="product-view-p"><a href="{{ item.get_absolute_url }}">{{ item.product_name }}</a></h3>
                   <h5>Category: {{ item.category }}</h5>
-                  <h4 > Price : ${{ item.base_price |intcomma }}</h4>
+                  <h4 > Price : FCFA{{ item.base_price |intcomma }}</h4>
                   <h5 class="product-view-p"  > Year dated :{{ item.year_published }}</h5>
                   <p  class="product-view-p" > {{item.description}} <p>
                   <button class="button primary-btn" >Bid Now</button>
@@ -330,7 +332,9 @@
                  <div class="card-body">
                    <p>{{ item.category }}</p>
                    <h4 class="card-product__title"><a href="{{ item.get_absolute_url }}">{{ item.product_name }}</a></h4>
-                   <p class="card-product__price">$ {{ item.base_price }}</p>
+                   <p class="card-product__price">
+                
+                    FCFA {{ item.base_price }}</p>
                  </div>
                </div>
              </div>

@@ -149,7 +149,7 @@
                     <div class="card-product-title" >
                     <h3  class="product-view-p"><a href="{{ item.get_absolute_url }}">{{ item.product_name }}</a></h3>
                     <h5>Category: {{ item.category }}</h5>
-                    <h4 > Price : ${{ item.base_price |intcomma }}</h4>
+                    <h4 > Price : FCFA{{ item.base_price |intcomma }}</h4>
                     <h5 class="product-view-p"  > Year dated :{{ item.year_published }}</h5>
                     <p  class="product-view-p" > {{item.description}} <p>
                     <button class="button primary-btn" >Bid Now</button>

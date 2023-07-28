@@ -182,7 +182,7 @@
 
 
 						<h3> Year dated : <span style="color: #6495ed;" >{{ lot.year_published | date:"D,d,M,Y"}} </span> </h3>
-						<h2> Base Price : $ {{ lot.base_price }}</h2>
+						<h2> Base Price : FCFA {{ lot.base_price }}</h2>
 						
 						<ul class="list">
 							<li><a class="active" href="{{category.get_absolute_url}}"><span>Category</span> {{ lot.category }}</a></li>
@@ -756,7 +756,7 @@
 				
 				<h3  class="product-view-p"><a href="{{ item.get_absolute_url }}">{{ item.product_name }}</a></h3>
 				<h5>Category: {{ item.category }}</h5>
-				<h4 > Price : ${{ item.base_price |intcomma }}</h4>
+				<h4 > Price : FCFA{{ item.base_price |intcomma }}</h4>
 				<h5 class="product-view-p"  > Year dated :{{ item.year_published|date:"D,d,M,Y"}}</h5>
 				<p  class="product-view-p" > {{item.description}} <p>
 				<button class="button primary-btn" >Bid Now</button>
@@ -765,7 +765,7 @@
 			<div class="card-body">
 			  <p> {% if item.category %} {{ item.category}} {% else %} Product {% endif %}</p>
 			  <h4 class="card-product__title"><a href="{{ item.get_absolute_url }}">{{ item.product_name }}</a></h4>
-			  <p class="card-product__price">${{ item.base_price |intcomma }}</p>
+			  <p class="card-product__price">FCFA{{ item.base_price |intcomma }}</p>
 		  
 			</div>
 		  </div>

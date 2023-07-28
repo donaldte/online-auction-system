@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% block body %}
+
+<body>
+  <section style="padding-top: 20px;" >
+    {%include '_alerts.html' %}
+  </section>  
+    <div class="container mt-5">
+      <h2>Seller Application Form</h2>
+      <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+          <!-- Seller Picture -->
+          <div class="mb-3">
+            <label for="sellerPicture" class="form-label">Seller Picture</label>
+            <input name="seller_picture" type="file" class="form-control" id="sellerPicture" accept="image/*" required>
+          </div>
+          
+          <!-- Contact Number -->
+          <div class="mb-3">
+            <label for="contactNumber" class="form-label">Contact Number</label>
+            <input name="contact_number" type="tel" class="form-control" id="contactNumber" required>
+          </div>
+          
+          <!-- Seller Email -->
+          <div class="mb-3">
+            <label for="sellerEmail" class="form-label">Seller Email</label>
+            <input  name="seller_email" type="email" class="form-control" id="sellerEmail" required>
+          </div>
+    
+          <!-- Region Select -->
+          <div class="mb-3">
+            <label for="regionSelect" class="form-label">Select Region</label>
+            <select name="regions" class="form-select form-control" id="regionSelect" required>
+              <option value="" disabled selected>Select a region</option>
+              <option value="Adamaoua">Adamaoua</option>
+              <option value="Centre">Centre</option>
+              <option value="East">East</option>
+              <option value="Far North">Far North</option>
+              <option value="Littoral">Littoral</option>
+              <option value="North">North</option>
+              <option value="Northwest">Northwest</option>
+              <option value="South">South</option>
+              <option value="Southwest">Southwest</option>
+              <option value="West">West</option>
+            </select>
+          </div>
+          <!-- Contact Number -->
+          <div class="mb-3">
+            <label for="location" class="form-label">Location</label>
+            <input name="location" type="input" class="form-control" id="location" required>
+          </div>
+          <!-- Profile Description -->
+          <div class="mb-3">
+            <label for="profileDescription" class="form-label">Profile Description</label>
+            <textarea name="profile_description" class="form-control" id="profileDescription" rows="5" required></textarea>
+          </div>
+    
+          <!-- Submit Button -->
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+  
+  
+{% endblock %}

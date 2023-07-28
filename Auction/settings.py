@@ -168,8 +168,8 @@ MESSAGE_TAGS = {
 
 
 EMAIL_HOST='smtp.gmail.com'
-EMAIL_HOST_USER='melzpereira0509@gmail.com'
-EMAIL_HOST_PASSWORD='############'
+EMAIL_HOST_USER='hooyia8@gmail.com'
+EMAIL_HOST_PASSWORD='rolqqsaymtxilwfk'
 EMAIL_PORT=587
 EMAIL_USE_TLS=True
 

@@ -129,7 +129,7 @@
               <div class="card-product-title" >
               <h3  class="product-view-p"><a href="{{ lots.get_absolute_url }}">{{ item.product_name }}</a></h3>
               <h5>Category: {{ lots.category }}</h5>
-              <h4 > Price : ${{ lots.base_price |intcomma }}</h4>
+              <h4 > Price : FCFA{{ lots.base_price |intcomma }}</h4>
               <h5 class="product-view-p"  > Year dated :{{ lots.year_published }}</h5>
               <p  class="product-view-p" > {{lots.description}} <p>
               <button class="button primary-btn" >Bid Now</button>
@@ -138,7 +138,7 @@
             <div class="card-body">
               <p>{{ lots.category }}</p>
               <h4 class="card-product__title"><a href="{{ lots.get_absolute_url }}">{{ lots.product_name }}</a></h4>
-              <p class="card-product__price">$ {{ lots.base_price }}</p>
+              <p class="card-product__price">FCFA {{ lots.base_price }}</p>
             </div>
           </div>
         </div>

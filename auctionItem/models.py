@@ -21,10 +21,13 @@ class Category(models.Model):
         return self.name 
 
 class Seller(models.Model):
-    name=models.CharField(max_length=200)
+    name=models.CharField(max_length=200, unique=True)
     seller_photo=models.ImageField(upload_to='photos/seller/%Y/%m/%d/')
     contact_no =models.CharField(max_length=200)
     email=models.CharField(max_length=200)
+    region = models.CharField(max_length=200, null=True, blank=True)
+    location = models.CharField(max_length=200, null=True, blank=True)
+    description = models.TextField(null=True, blank=True)
     def get_absolute_url(self):
         return reverse('auction:seller-page',args=[self.id])
     
